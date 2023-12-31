@@ -1,0 +1,11 @@
+FROM php:8.2-fpm
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN apt-get update && apt-get install -y \
+    git unzip libzip-dev libicu-dev libonig-dev vim sudo \
+&& docker-php-ext-install pdo_mysql intl zip bcmath
+
+# Node.jsをインストール
+RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get install -y nodejs npm
+RUN npm install --save-dev vite laravel-vite-plugin autoprefixer
