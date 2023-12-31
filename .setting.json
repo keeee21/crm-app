@@ -1,0 +1,4 @@
+{
+  "//": "VeturによるLint機能をおっふ",
+  "vetur.validation.template": false
+}
