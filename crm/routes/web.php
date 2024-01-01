@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CustomerController;
+use App\Models\Customer;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +29,7 @@ Route::get('/', function () {
 });
 
 Route::resource('items', ItemController::class)->middleware(['auth', 'verified']);
+Route::resource('customers', CustomerController::class)->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
